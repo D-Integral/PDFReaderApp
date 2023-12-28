@@ -22,19 +22,19 @@ class HomeTabBarController: UITabBarController {
     // MARK: Tab bar items
     
     func filesTabBarItem() -> UITabBarItem {
-        return tabBarItem(withTitle: filesTabBarItemTitle(),
+        return tabBarItem(withTitle: String(localized: "filesTabBarItemTitle"),
                           image: UIImage.iconFilesSelected.withTintColor(.iconGray),
                           selectedImage: UIImage.iconFilesSelected)
     }
     
     func toolsTabBarItem() -> UITabBarItem {
-        return tabBarItem(withTitle: toolsTabBarItemTitle(),
+        return tabBarItem(withTitle: toolsTitle(),
                           image: UIImage.iconTools,
                           selectedImage: UIImage.iconTools.withTintColor(.iconPurple))
     }
     
     func accountTabBarItem() -> UITabBarItem {
-        return tabBarItem(withTitle: accountTabBarItemTitle(),
+        return tabBarItem(withTitle: String(localized: "accountTabBarItemTitle"),
                           image: UIImage.iconAccount,
                           selectedImage: UIImage.iconAccount.withTintColor(.iconPurple))
     }
@@ -45,18 +45,6 @@ class HomeTabBarController: UITabBarController {
         return UITabBarItem(title: title,
                             image: image,
                             selectedImage: selectedImage)
-    }
-    
-    func filesTabBarItemTitle() -> String {
-        return String(localized: "filesTabBarItemTitle")
-    }
-    
-    func toolsTabBarItemTitle() -> String {
-        return toolsTitle()
-    }
-    
-    func accountTabBarItemTitle() -> String {
-        return String(localized: "accountTabBarItemTitle")
     }
     
     // MARK: Navigation controllers
