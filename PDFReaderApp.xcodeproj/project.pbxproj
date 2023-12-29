@@ -11,6 +11,16 @@
 		0FB7DAE82B3DF51B00985825 /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */; };
 		0FB7DAEA2B3DF54100985825 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAE92B3DF54100985825 /* AccountViewController.swift */; };
 		0FB7DAEC2B3E0A1600985825 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAEB2B3E0A1600985825 /* HomeTabBarController.swift */; };
+		0FB7DAF22B3F150E00985825 /* FileStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAF12B3F150E00985825 /* FileStorageProtocol.swift */; };
+		0FB7DAF52B3F159900985825 /* FileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAF42B3F159900985825 /* FileProtocol.swift */; };
+		0FB7DAF92B3F16B400985825 /* DiskFileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAF82B3F16B400985825 /* DiskFileStorage.swift */; };
+		0FB7DAFB2B3F1A6F00985825 /* FilesListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAFA2B3F1A6F00985825 /* FilesListProtocol.swift */; };
+		0FB7DAFF2B3F1C8900985825 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */; };
+		0FB7DB012B3F1F2000985825 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB002B3F1F2000985825 /* FileType.swift */; };
+		0FB7DB052B3F21F500985825 /* PDFFileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */; };
+		0FB7DB072B3F2A2F00985825 /* DiskFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB062B3F2A2F00985825 /* DiskFile.swift */; };
+		0FB7DB092B3F2B9D00985825 /* DiskFilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB082B3F2B9D00985825 /* DiskFilesList.swift */; };
+		0FB7DB0B2B3F30F600985825 /* DiskFileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */; };
 		0FBCA99A2B3DA7A000149F38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA9992B3DA7A000149F38 /* AppDelegate.swift */; };
 		0FBCA99C2B3DA7A000149F38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA99B2B3DA7A000149F38 /* SceneDelegate.swift */; };
 		0FBCA99E2B3DA7A000149F38 /* MyFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA99D2B3DA7A000149F38 /* MyFilesViewController.swift */; };
@@ -43,6 +53,16 @@
 		0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		0FB7DAE92B3DF54100985825 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		0FB7DAEB2B3E0A1600985825 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		0FB7DAF12B3F150E00985825 /* FileStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageProtocol.swift; sourceTree = "<group>"; };
+		0FB7DAF42B3F159900985825 /* FileProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProtocol.swift; sourceTree = "<group>"; };
+		0FB7DAF82B3F16B400985825 /* DiskFileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFileStorage.swift; sourceTree = "<group>"; };
+		0FB7DAFA2B3F1A6F00985825 /* FilesListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesListProtocol.swift; sourceTree = "<group>"; };
+		0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0FB7DB002B3F1F2000985825 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFileStorage.swift; sourceTree = "<group>"; };
+		0FB7DB062B3F2A2F00985825 /* DiskFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFile.swift; sourceTree = "<group>"; };
+		0FB7DB082B3F2B9D00985825 /* DiskFilesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFilesList.swift; sourceTree = "<group>"; };
+		0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFileStorageError.swift; sourceTree = "<group>"; };
 		0FBCA9962B3DA7A000149F38 /* PDFReaderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFReaderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBCA9992B3DA7A000149F38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FBCA99B2B3DA7A000149F38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +102,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FB7DAED2B3F124D00985825 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				0FBCA99D2B3DA7A000149F38 /* MyFilesViewController.swift */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		0FB7DAEE2B3F126300985825 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DAE92B3DF54100985825 /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		0FB7DAEF2B3F127800985825 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		0FB7DAF02B3F12A600985825 /* FileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DAF32B3F155300985825 /* DiskFileStorage */,
+				0FB7DB032B3F214A00985825 /* GeneralFileStorage */,
+				0FB7DB022B3F211D00985825 /* PDFFileStorage */,
+			);
+			path = FileStorage;
+			sourceTree = "<group>";
+		};
+		0FB7DAF32B3F155300985825 /* DiskFileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DAF82B3F16B400985825 /* DiskFileStorage.swift */,
+				0FB7DB062B3F2A2F00985825 /* DiskFile.swift */,
+				0FB7DB082B3F2B9D00985825 /* DiskFilesList.swift */,
+				0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */,
+			);
+			path = DiskFileStorage;
+			sourceTree = "<group>";
+		};
+		0FB7DB022B3F211D00985825 /* PDFFileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */,
+			);
+			path = PDFFileStorage;
+			sourceTree = "<group>";
+		};
+		0FB7DB032B3F214A00985825 /* GeneralFileStorage */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7DAF12B3F150E00985825 /* FileStorageProtocol.swift */,
+				0FB7DAF42B3F159900985825 /* FileProtocol.swift */,
+				0FB7DB002B3F1F2000985825 /* FileType.swift */,
+				0FB7DAFA2B3F1A6F00985825 /* FilesListProtocol.swift */,
+			);
+			path = GeneralFileStorage;
+			sourceTree = "<group>";
+		};
 		0FBCA98D2B3DA7A000149F38 = {
 			isa = PBXGroup;
 			children = (
@@ -108,9 +192,11 @@
 				0FBCA9992B3DA7A000149F38 /* AppDelegate.swift */,
 				0FBCA99B2B3DA7A000149F38 /* SceneDelegate.swift */,
 				0FB7DAEB2B3E0A1600985825 /* HomeTabBarController.swift */,
-				0FBCA99D2B3DA7A000149F38 /* MyFilesViewController.swift */,
-				0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */,
-				0FB7DAE92B3DF54100985825 /* AccountViewController.swift */,
+				0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */,
+				0FB7DAF02B3F12A600985825 /* FileStorage */,
+				0FB7DAEE2B3F126300985825 /* Account */,
+				0FB7DAED2B3F124D00985825 /* Files */,
+				0FB7DAEF2B3F127800985825 /* Tools */,
 				0FB7DAE52B3DF08000985825 /* Localizable.xcstrings */,
 				0FBCA9A22B3DA7A200149F38 /* Assets.xcassets */,
 				0FBCA9A42B3DA7A200149F38 /* LaunchScreen.storyboard */,
@@ -271,12 +357,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FB7DAF22B3F150E00985825 /* FileStorageProtocol.swift in Sources */,
 				0FB7DAE82B3DF51B00985825 /* ToolsViewController.swift in Sources */,
+				0FB7DAFF2B3F1C8900985825 /* AppCoordinator.swift in Sources */,
 				0FB7DAEA2B3DF54100985825 /* AccountViewController.swift in Sources */,
+				0FB7DB072B3F2A2F00985825 /* DiskFile.swift in Sources */,
 				0FB7DAEC2B3E0A1600985825 /* HomeTabBarController.swift in Sources */,
+				0FB7DAF92B3F16B400985825 /* DiskFileStorage.swift in Sources */,
 				0FBCA99E2B3DA7A000149F38 /* MyFilesViewController.swift in Sources */,
+				0FB7DB092B3F2B9D00985825 /* DiskFilesList.swift in Sources */,
+				0FB7DB012B3F1F2000985825 /* FileType.swift in Sources */,
+				0FB7DAF52B3F159900985825 /* FileProtocol.swift in Sources */,
 				0FBCA99A2B3DA7A000149F38 /* AppDelegate.swift in Sources */,
+				0FB7DAFB2B3F1A6F00985825 /* FilesListProtocol.swift in Sources */,
+				0FB7DB052B3F21F500985825 /* PDFFileStorage.swift in Sources */,
 				0FBCA99C2B3DA7A000149F38 /* SceneDelegate.swift in Sources */,
+				0FB7DB0B2B3F30F600985825 /* DiskFileStorageError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
