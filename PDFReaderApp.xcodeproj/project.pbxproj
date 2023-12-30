@@ -26,9 +26,8 @@
 		0FBCA99E2B3DA7A000149F38 /* MyFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA99D2B3DA7A000149F38 /* MyFilesViewController.swift */; };
 		0FBCA9A32B3DA7A200149F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBCA9A22B3DA7A200149F38 /* Assets.xcassets */; };
 		0FBCA9A62B3DA7A200149F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBCA9A42B3DA7A200149F38 /* LaunchScreen.storyboard */; };
-		0FBCA9B12B3DA7A300149F38 /* PDFReaderAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA9B02B3DA7A300149F38 /* PDFReaderAppTests.swift */; };
-		0FBCA9BB2B3DA7A300149F38 /* PDFReaderAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA9BA2B3DA7A300149F38 /* PDFReaderAppUITests.swift */; };
-		0FBCA9BD2B3DA7A300149F38 /* PDFReaderAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCA9BC2B3DA7A300149F38 /* PDFReaderAppUITestsLaunchTests.swift */; };
+		0FE1596E2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1596D2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf */; };
+		0FE159712B407F1E000F5EDD /* PDFFileStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,16 +38,10 @@
 			remoteGlobalIDString = 0FBCA9952B3DA7A000149F38;
 			remoteInfo = PDFReaderApp;
 		};
-		0FBCA9B72B3DA7A300149F38 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0FBCA98E2B3DA7A000149F38 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0FBCA9952B3DA7A000149F38;
-			remoteInfo = PDFReaderApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F04FD3B2B4087DA005F9968 /* PDFReaderApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PDFReaderApp.xctestplan; sourceTree = "<group>"; };
 		0FB7DAE52B3DF08000985825 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		0FB7DAE92B3DF54100985825 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -71,10 +64,8 @@
 		0FBCA9A52B3DA7A200149F38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FBCA9A72B3DA7A200149F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FBCA9AC2B3DA7A300149F38 /* PDFReaderAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFReaderAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FBCA9B02B3DA7A300149F38 /* PDFReaderAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderAppTests.swift; sourceTree = "<group>"; };
-		0FBCA9B62B3DA7A300149F38 /* PDFReaderAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFReaderAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FBCA9BA2B3DA7A300149F38 /* PDFReaderAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderAppUITests.swift; sourceTree = "<group>"; };
-		0FBCA9BC2B3DA7A300149F38 /* PDFReaderAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0FE1596D2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "CV Dmytro Skorokhod 12:26:2023.pdf"; sourceTree = "<group>"; };
+		0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFileStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +77,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0FBCA9A92B3DA7A300149F38 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0FBCA9B32B3DA7A300149F38 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -169,9 +153,9 @@
 		0FBCA98D2B3DA7A000149F38 = {
 			isa = PBXGroup;
 			children = (
+				0F04FD3B2B4087DA005F9968 /* PDFReaderApp.xctestplan */,
 				0FBCA9982B3DA7A000149F38 /* PDFReaderApp */,
 				0FBCA9AF2B3DA7A300149F38 /* PDFReaderAppTests */,
-				0FBCA9B92B3DA7A300149F38 /* PDFReaderAppUITests */,
 				0FBCA9972B3DA7A000149F38 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,7 +165,6 @@
 			children = (
 				0FBCA9962B3DA7A000149F38 /* PDFReaderApp.app */,
 				0FBCA9AC2B3DA7A300149F38 /* PDFReaderAppTests.xctest */,
-				0FBCA9B62B3DA7A300149F38 /* PDFReaderAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,18 +191,18 @@
 		0FBCA9AF2B3DA7A300149F38 /* PDFReaderAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				0FBCA9B02B3DA7A300149F38 /* PDFReaderAppTests.swift */,
+				0FE1596F2B407ECA000F5EDD /* TestResources */,
+				0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */,
 			);
 			path = PDFReaderAppTests;
 			sourceTree = "<group>";
 		};
-		0FBCA9B92B3DA7A300149F38 /* PDFReaderAppUITests */ = {
+		0FE1596F2B407ECA000F5EDD /* TestResources */ = {
 			isa = PBXGroup;
 			children = (
-				0FBCA9BA2B3DA7A300149F38 /* PDFReaderAppUITests.swift */,
-				0FBCA9BC2B3DA7A300149F38 /* PDFReaderAppUITestsLaunchTests.swift */,
+				0FE1596D2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf */,
 			);
-			path = PDFReaderAppUITests;
+			path = TestResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,24 +243,6 @@
 			productReference = 0FBCA9AC2B3DA7A300149F38 /* PDFReaderAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0FBCA9B52B3DA7A300149F38 /* PDFReaderAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0FBCA9C62B3DA7A300149F38 /* Build configuration list for PBXNativeTarget "PDFReaderAppUITests" */;
-			buildPhases = (
-				0FBCA9B22B3DA7A300149F38 /* Sources */,
-				0FBCA9B32B3DA7A300149F38 /* Frameworks */,
-				0FBCA9B42B3DA7A300149F38 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0FBCA9B82B3DA7A300149F38 /* PBXTargetDependency */,
-			);
-			name = PDFReaderAppUITests;
-			productName = PDFReaderAppUITests;
-			productReference = 0FBCA9B62B3DA7A300149F38 /* PDFReaderAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -292,10 +257,6 @@
 						CreatedOnToolsVersion = 15.1;
 					};
 					0FBCA9AB2B3DA7A300149F38 = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = 0FBCA9952B3DA7A000149F38;
-					};
-					0FBCA9B52B3DA7A300149F38 = {
 						CreatedOnToolsVersion = 15.1;
 						TestTargetID = 0FBCA9952B3DA7A000149F38;
 					};
@@ -320,7 +281,6 @@
 			targets = (
 				0FBCA9952B3DA7A000149F38 /* PDFReaderApp */,
 				0FBCA9AB2B3DA7A300149F38 /* PDFReaderAppTests */,
-				0FBCA9B52B3DA7A300149F38 /* PDFReaderAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE1596E2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf in Resources */,
 				0FBCA9A62B3DA7A200149F38 /* LaunchScreen.storyboard in Resources */,
 				0FBCA9A32B3DA7A200149F38 /* Assets.xcassets in Resources */,
 				0FB7DAE62B3DF08000985825 /* Localizable.xcstrings in Resources */,
@@ -337,13 +298,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0FBCA9AA2B3DA7A300149F38 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0FBCA9B42B3DA7A300149F38 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,16 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FBCA9B12B3DA7A300149F38 /* PDFReaderAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0FBCA9B22B3DA7A300149F38 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FBCA9BD2B3DA7A300149F38 /* PDFReaderAppUITestsLaunchTests.swift in Sources */,
-				0FBCA9BB2B3DA7A300149F38 /* PDFReaderAppUITests.swift in Sources */,
+				0FE159712B407F1E000F5EDD /* PDFFileStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,11 +345,6 @@
 			isa = PBXTargetDependency;
 			target = 0FBCA9952B3DA7A000149F38 /* PDFReaderApp */;
 			targetProxy = 0FBCA9AD2B3DA7A300149F38 /* PBXContainerItemProxy */;
-		};
-		0FBCA9B82B3DA7A300149F38 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0FBCA9952B3DA7A000149F38 /* PDFReaderApp */;
-			targetProxy = 0FBCA9B72B3DA7A300149F38 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -635,42 +575,6 @@
 			};
 			name = Release;
 		};
-		0FBCA9C72B3DA7A300149F38 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EYWEP6YJP9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dintegralas.PDFReaderAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PDFReaderApp;
-			};
-			name = Debug;
-		};
-		0FBCA9C82B3DA7A300149F38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EYWEP6YJP9;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dintegralas.PDFReaderAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PDFReaderApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -697,15 +601,6 @@
 			buildConfigurations = (
 				0FBCA9C42B3DA7A300149F38 /* Debug */,
 				0FBCA9C52B3DA7A300149F38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0FBCA9C62B3DA7A300149F38 /* Build configuration list for PBXNativeTarget "PDFReaderAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0FBCA9C72B3DA7A300149F38 /* Debug */,
-				0FBCA9C82B3DA7A300149F38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,10 @@
 import Foundation
 
 struct DiskFilesList: FilesListProtocol {
+    init(diskFiles: [String : DiskFile]) {
+        self.diskFiles = diskFiles
+    }
+    
     var files: [String: FileProtocol] {
         get {
             return diskFiles

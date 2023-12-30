@@ -15,12 +15,24 @@ class DiskFileStorage: FileStorageProtocol {
         } catch {
             print(error)
         }
+        
+        if nil == self.filesList {
+            self.filesList = DiskFilesList(diskFiles: [String : DiskFile]())
+        }
     }
     
     // MARK: FileStorageProtocol
     
-    var files: [FileProtocol] {
-        return filesList?.files.values as? [FileProtocol] ?? []
+    var fileNames: [String] {
+        return Array(arrayLiteral: filesList?.files.keys) as? [String] ?? []
+    }
+    
+    var filesCount: Int {
+        return filesList?.files.count ?? 0
+    }
+    
+    func file(withName fileName: String) -> FileProtocol? {
+        return filesList?.files[fileName]
     }
     
     func save(_ file: FileProtocol) throws {

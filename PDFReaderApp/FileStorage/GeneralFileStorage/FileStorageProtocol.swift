@@ -8,7 +8,10 @@
 import Foundation
 
 protocol FileStorageProtocol {
-    var files: [FileProtocol] { get }
+    var fileNames: [String] { get }
+    var filesCount: Int { get }
+    
+    func file(withName fileName: String) -> FileProtocol?
     
     func save(_ file: FileProtocol) throws
     func delete(_ fileName: String)

@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "43F01FC6-F8FC-44BA-AA83-5DA4BA2F1C74",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:PDFReaderApp.xcodeproj",
+      "identifier" : "0FBCA9952B3DA7A000149F38",
+      "name" : "PDFReaderApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:PDFReaderApp.xcodeproj",
+        "identifier" : "0FBCA9AB2B3DA7A300149F38",
+        "name" : "PDFReaderAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
