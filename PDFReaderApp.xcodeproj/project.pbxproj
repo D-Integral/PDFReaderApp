@@ -17,7 +17,6 @@
 		0FB7DAFB2B3F1A6F00985825 /* FilesListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAFA2B3F1A6F00985825 /* FilesListProtocol.swift */; };
 		0FB7DAFF2B3F1C8900985825 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */; };
 		0FB7DB012B3F1F2000985825 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB002B3F1F2000985825 /* FileType.swift */; };
-		0FB7DB052B3F21F500985825 /* PDFFileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */; };
 		0FB7DB072B3F2A2F00985825 /* DiskFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB062B3F2A2F00985825 /* DiskFile.swift */; };
 		0FB7DB092B3F2B9D00985825 /* DiskFilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB082B3F2B9D00985825 /* DiskFilesList.swift */; };
 		0FB7DB0B2B3F30F600985825 /* DiskFileStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */; };
@@ -27,7 +26,7 @@
 		0FBCA9A32B3DA7A200149F38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBCA9A22B3DA7A200149F38 /* Assets.xcassets */; };
 		0FBCA9A62B3DA7A200149F38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FBCA9A42B3DA7A200149F38 /* LaunchScreen.storyboard */; };
 		0FE1596E2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1596D2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf */; };
-		0FE159712B407F1E000F5EDD /* PDFFileStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */; };
+		0FE159712B407F1E000F5EDD /* DiskFileStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE159702B407F1E000F5EDD /* DiskFileStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		0FB7DAFA2B3F1A6F00985825 /* FilesListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesListProtocol.swift; sourceTree = "<group>"; };
 		0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0FB7DB002B3F1F2000985825 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
-		0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFileStorage.swift; sourceTree = "<group>"; };
 		0FB7DB062B3F2A2F00985825 /* DiskFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFile.swift; sourceTree = "<group>"; };
 		0FB7DB082B3F2B9D00985825 /* DiskFilesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFilesList.swift; sourceTree = "<group>"; };
 		0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFileStorageError.swift; sourceTree = "<group>"; };
@@ -65,7 +63,7 @@
 		0FBCA9A72B3DA7A200149F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FBCA9AC2B3DA7A300149F38 /* PDFReaderAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFReaderAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE1596D2B407EC1000F5EDD /* CV Dmytro Skorokhod 12:26:2023.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "CV Dmytro Skorokhod 12:26:2023.pdf"; sourceTree = "<group>"; };
-		0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFileStorageTests.swift; sourceTree = "<group>"; };
+		0FE159702B407F1E000F5EDD /* DiskFileStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskFileStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +113,6 @@
 			children = (
 				0FB7DAF32B3F155300985825 /* DiskFileStorage */,
 				0FB7DB032B3F214A00985825 /* GeneralFileStorage */,
-				0FB7DB022B3F211D00985825 /* PDFFileStorage */,
 			);
 			path = FileStorage;
 			sourceTree = "<group>";
@@ -129,14 +126,6 @@
 				0FB7DB0A2B3F30F600985825 /* DiskFileStorageError.swift */,
 			);
 			path = DiskFileStorage;
-			sourceTree = "<group>";
-		};
-		0FB7DB022B3F211D00985825 /* PDFFileStorage */ = {
-			isa = PBXGroup;
-			children = (
-				0FB7DB042B3F21F500985825 /* PDFFileStorage.swift */,
-			);
-			path = PDFFileStorage;
 			sourceTree = "<group>";
 		};
 		0FB7DB032B3F214A00985825 /* GeneralFileStorage */ = {
@@ -192,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				0FE1596F2B407ECA000F5EDD /* TestResources */,
-				0FE159702B407F1E000F5EDD /* PDFFileStorageTests.swift */,
+				0FE159702B407F1E000F5EDD /* DiskFileStorageTests.swift */,
 			);
 			path = PDFReaderAppTests;
 			sourceTree = "<group>";
@@ -324,7 +313,6 @@
 				0FB7DAF52B3F159900985825 /* FileProtocol.swift in Sources */,
 				0FBCA99A2B3DA7A000149F38 /* AppDelegate.swift in Sources */,
 				0FB7DAFB2B3F1A6F00985825 /* FilesListProtocol.swift in Sources */,
-				0FB7DB052B3F21F500985825 /* PDFFileStorage.swift in Sources */,
 				0FBCA99C2B3DA7A000149F38 /* SceneDelegate.swift in Sources */,
 				0FB7DB0B2B3F30F600985825 /* DiskFileStorageError.swift in Sources */,
 			);
@@ -334,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FE159712B407F1E000F5EDD /* PDFFileStorageTests.swift in Sources */,
+				0FE159712B407F1E000F5EDD /* DiskFileStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

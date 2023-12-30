@@ -9,10 +9,10 @@ import XCTest
 @testable import PDFReaderApp
 import PDFKit
 
-final class PDFFileStorageTests: XCTestCase {
+final class DiskFileStorageTests: XCTestCase {
     
     let testFileName = "CV Dmytro Skorokhod 12:26:2023"
-    let pdfFileStorage = PDFFileStorage()
+    let diskFileStorage = DiskFileStorage()
 
     override func setUpWithError() throws {
     }
@@ -22,8 +22,8 @@ final class PDFFileStorageTests: XCTestCase {
 
     func testFileSavingAndDeleting() throws {
         defer {
-            pdfFileStorage.delete(testFileName)
-            XCTAssertTrue(pdfFileStorage.filesCount == 0)
+            diskFileStorage.delete(testFileName)
+            XCTAssertTrue(diskFileStorage.filesCount == 0)
         }
         
         guard let fileUrl = Bundle.main.url(forResource: testFileName, withExtension: "pdf") else {
@@ -55,18 +55,18 @@ final class PDFFileStorageTests: XCTestCase {
                                 fileType: .pdfDocument)
         XCTAssertNotNil(diskFile)
         
-        XCTAssertTrue(pdfFileStorage.filesCount == 0)
+        XCTAssertTrue(diskFileStorage.filesCount == 0)
         
         do {
-            try pdfFileStorage.save(diskFile)
+            try diskFileStorage.save(diskFile)
         } catch {
             XCTFail("An attempt to save the PDF file to the storage has failed with error: \(error.localizedDescription)")
             return
         }
         
-        XCTAssertTrue(pdfFileStorage.filesCount == 1)
+        XCTAssertTrue(diskFileStorage.filesCount == 1)
         
-        let retrievedFile = pdfFileStorage.file(withName: testFileName)
+        let retrievedFile = diskFileStorage.file(withName: testFileName)
         XCTAssertNotNil(retrievedFile)
         XCTAssertTrue(retrievedFile?.name == testFileName)
         XCTAssertNotNil(retrievedFile?.data)

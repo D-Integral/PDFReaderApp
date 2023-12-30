@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DiskFileStorage: FileStorageProtocol {
+final class DiskFileStorage: FileStorageProtocol {
     
     init() {
         do {
