@@ -12,6 +12,7 @@ import PDFKit
 final class DiskFileStorageTests: XCTestCase {
     
     let testFileName = "CV Dmytro Skorokhod 12:26:2023"
+    var initialFileCount = 0
     let diskFileStorage = DiskFileStorage()
 
     override func setUpWithError() throws {
@@ -23,7 +24,7 @@ final class DiskFileStorageTests: XCTestCase {
     func testFileSavingAndDeleting() throws {
         defer {
             diskFileStorage.delete(testFileName)
-            XCTAssertTrue(diskFileStorage.filesCount == 0)
+            XCTAssertTrue(diskFileStorage.filesCount == initialFileCount)
         }
         
         guard let fileUrl = Bundle.main.url(forResource: testFileName, withExtension: "pdf") else {
@@ -55,7 +56,7 @@ final class DiskFileStorageTests: XCTestCase {
                                 fileType: .pdfDocument)
         XCTAssertNotNil(diskFile)
         
-        XCTAssertTrue(diskFileStorage.filesCount == 0)
+        initialFileCount = diskFileStorage.filesCount
         
         do {
             try diskFileStorage.save(diskFile)
@@ -64,7 +65,7 @@ final class DiskFileStorageTests: XCTestCase {
             return
         }
         
-        XCTAssertTrue(diskFileStorage.filesCount == 1)
+        XCTAssertTrue(diskFileStorage.filesCount == initialFileCount + 1)
         
         let retrievedFile = diskFileStorage.file(withName: testFileName)
         XCTAssertNotNil(retrievedFile)
