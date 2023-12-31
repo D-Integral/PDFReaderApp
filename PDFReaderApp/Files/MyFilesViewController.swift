@@ -6,8 +6,6 @@
 //
 
 import UIKit
-//import MobileCoreServices
-import UniformTypeIdentifiers
 
 class MyFilesViewController: UIViewController {
     struct Constants {
@@ -67,37 +65,10 @@ class MyFilesViewController: UIViewController {
     }
     
     @objc private func importAction() {
-        let types = UTType.types(tag: "pdf",
-                                 tagClass: UTTagClass.filenameExtension,
-                                 conformingTo: nil)
-        let documentPickerController = UIDocumentPickerViewController(forOpeningContentTypes: types,
-                                                                      asCopy: true)
+        guard let documentPicker = presenter?.documentPickerViewController else { return }
         
-        documentPickerController.delegate = self
-        documentPickerController.allowsMultipleSelection = true
-        
-        self.present(documentPickerController, animated: true, completion: nil)
-    }
-    
-    func save(from url: URL) {
-        do {
-            try presenter?.save(from: url)
-        } catch {
-            self.present(fileImportFailedAlert(),
-                         animated: true,
-                         completion: nil)
-        }
-    }
-    
-    func fileImportFailedAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "Error",
-                                      message: "File Import Failed",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: UIAlertAction.Style.default,
-                                      handler: nil))
-        
-        return alert
+        self.present(documentPicker,
+                     animated: true,
+                     completion: nil)
     }
 }

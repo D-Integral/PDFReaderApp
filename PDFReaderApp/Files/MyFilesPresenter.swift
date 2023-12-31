@@ -11,14 +11,19 @@ import UIKit
 class MyFilesPresenter: PresenterProtocol {
     private let interactor: MyFilesInteractor
     
+    let documentPickerManager: DocumentPickerManager
+    
     let title: String
     
-    init(interactor: MyFilesInteractor, title: String) {
+    init(interactor: MyFilesInteractor,
+         documentImportManager: DocumentImportManagerProtocol,
+         title: String) {
         self.interactor = interactor
+        self.documentPickerManager = DocumentPickerManager(documentImportManager: documentImportManager)
         self.title = title
     }
     
-    func save(from url: URL) throws {
-        try interactor.save(from: url)
+    var documentPickerViewController: UIDocumentPickerViewController? {
+        return documentPickerManager.documentPickerViewController
     }
 }

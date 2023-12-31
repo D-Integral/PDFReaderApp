@@ -10,8 +10,12 @@ import UIKit
 
 class MyFilesRouter: RouterProtocol {
     func make(fileStorage: FileStorageProtocol) -> UIViewController {
-        let presenter = MyFilesPresenter(interactor: MyFilesInteractor(fileStorage: fileStorage),
+        let documentImportManager = PDFDocumentImportManager(fileStorage: fileStorage)
+        let interactor = MyFilesInteractor(fileStorage: fileStorage)
+        let presenter = MyFilesPresenter(interactor: interactor,
+                                         documentImportManager: documentImportManager,
                                          title: String(localized: "myFilesViewControllerTitle"))
+        
         return MyFilesViewController(presenter: presenter)
     }
 }
