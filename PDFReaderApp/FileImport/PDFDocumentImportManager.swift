@@ -34,4 +34,48 @@ final class PDFDocumentImportManager: DocumentImportManager {
     override var documentTypeTag: String? {
         return "pdf"
     }
+    
+    var securityScopedResources = Set<URL>()
+    
+    override func importDocuments(at urls: [URL],
+                                  completionHandler: @escaping () -> ()) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            let dispatchGroup = DispatchGroup()
+            let queue = OperationQueue()
+            
+            for url in urls {
+                dispatchGroup.enter()
+                self?.startAccessingSecurityScopedResource(for: url)
+                
+                NSFileCoordinator().coordinate(with: [.readingIntent(with: url)],
+                                               queue: queue) { [weak self] error in
+                    self?.onFileCoordinatorCompleted(for: url)
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.wait()
+            completionHandler()
+        }
+    }
+    
+    private func onFileCoordinatorCompleted(for url: URL) {
+        do {
+            try save(from: url)
+        } catch {
+            print(error)
+        }
+        
+        stopAccessingSecurityScopedResource(for: url)
+    }
+    
+    private func startAccessingSecurityScopedResource(for url: URL) {
+        url.stopAccessingSecurityScopedResource()
+        securityScopedResources.remove(url)
+    }
+    
+    private func stopAccessingSecurityScopedResource(for url: URL) {
+        url.stopAccessingSecurityScopedResource()
+        securityScopedResources.remove(url)
+    }
 }

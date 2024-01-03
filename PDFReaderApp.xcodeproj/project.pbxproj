@@ -123,8 +123,8 @@
 			children = (
 				0F4130C22B41B96D00981698 /* DocumentImportManagerProtocol.swift */,
 				0F4130C62B41B9F100981698 /* DocumentImportManager.swift */,
-				0F4130CA2B41BE0900981698 /* DocumentPickerManager.swift */,
 				0F4130C42B41B99A00981698 /* PDFDocumentImportManager.swift */,
+				0F4130CA2B41BE0900981698 /* DocumentPickerManager.swift */,
 				0F4130C82B41BB5A00981698 /* DocumentImportError.swift */,
 			);
 			path = FileImport;

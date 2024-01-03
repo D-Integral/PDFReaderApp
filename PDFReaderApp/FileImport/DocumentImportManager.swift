@@ -32,6 +32,9 @@ class DocumentImportManager: NSObject, DocumentImportManagerProtocol {
         return nil
     }
     
+    func importDocuments(at urls: [URL],
+                         completionHandler: @escaping () -> ()) { }
+    
     // MARK: Private Methods
     
     private func save(_ file: any FileProtocol) {

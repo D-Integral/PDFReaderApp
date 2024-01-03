@@ -15,4 +15,6 @@ protocol DocumentImportManagerProtocol {
     
     func save(from url: URL) throws
     func documentFile(from fileUrl: URL) -> (any FileProtocol)?
+    func importDocuments(at urls: [URL],
+                         completionHandler: @escaping () -> ())
 }

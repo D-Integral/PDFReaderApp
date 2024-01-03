@@ -80,31 +80,10 @@ final class DocumentPickerManager: NSObject, UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController,
                         didPickDocumentsAt urls: [URL]) {
-        for url in urls {
-            let isSecurityScopedResource = (url.startAccessingSecurityScopedResource() == true)
-            let coordinator = NSFileCoordinator()
-            var error: NSError? = nil
-            
-            coordinator.coordinate(readingItemAt: url,
-                                   options: [],
-                                   error: &error) { externalFileURL -> Void in
-                
-                save(from: externalFileURL)
-                
-                if (isSecurityScopedResource) {
-                    url.stopAccessingSecurityScopedResource()
-                }
-                
-                updateUI()
+        documentImportManager.importDocuments(at: urls) {
+            DispatchQueue.main.async { [weak self] in
+                self?.updateUI()
             }
-        }
-    }
-    
-    func save(from url: URL) {
-        do {
-            try documentImportManager.save(from: url)
-        } catch {
-            print(error)
         }
     }
     
