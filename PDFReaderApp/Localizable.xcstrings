@@ -141,6 +141,41 @@
         }
       }
     },
+    "searchPdfDocuments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prohledávejte PDF dokumenty"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search PDF Documents"
+          }
+        },
+        "ka-GE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "მოძებნეთ PDF დოკუმენტები"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск PDF-документов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пошук PDF-документів"
+          }
+        }
+      }
+    },
     "toolsTitle" : {
       "extractionState" : "manual",
       "localizations" : {

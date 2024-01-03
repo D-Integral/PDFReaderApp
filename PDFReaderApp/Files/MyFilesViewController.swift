@@ -42,9 +42,10 @@ class MyFilesViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     
-    let importButton = UIButton(type: .custom)
-    let collectionView = UICollectionView(frame: .zero,
-                                          collectionViewLayout: UICollectionViewFlowLayout())
+    private let importButton = UIButton(type: .custom)
+    private let collectionView = UICollectionView(frame: .zero,
+                                                  collectionViewLayout: UICollectionViewFlowLayout())
+    private var searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Life Cycle
     
@@ -70,6 +71,7 @@ class MyFilesViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        setupSearchController()
         setupCollectionView()
         setupImportButton()
         setupConstraints()
@@ -104,6 +106,14 @@ class MyFilesViewController: UIViewController {
     
     // MARK: - Setup
     
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = String(localized: "searchPdfDocuments")
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
     private func setupCollectionView() {
         collectionView.collectionViewLayout = collectionViewLayout()
         collectionView.register(MyFilesCollectionViewCell.self,
@@ -125,19 +135,19 @@ class MyFilesViewController: UIViewController {
     
     private func setupConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+        collectionView.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor,
                                             constant: Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,
-                                              constant: -Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+        collectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor,
+                                                 constant: -Constants.FilesList.Layout.contentInset).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor,
                                                constant: -Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor,
-                                             constant: Constants.FilesList.Layout.contentInset).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor,
+                                                constant: Constants.FilesList.Layout.contentInset).isActive = true
         
         importButton.translatesAutoresizingMaskIntoConstraints = false
-        importButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,
+        importButton.rightAnchor.constraint(equalTo: view.readableContentGuide.rightAnchor,
                                             constant: Constants.ImportButtonLayout.rightOffset).isActive = true
-        importButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+        importButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor,
                                              constant: Constants.ImportButtonLayout.bottomOffset).isActive = true
         importButton.widthAnchor.constraint(equalToConstant: Constants.ImportButtonLayout.side).isActive = true
         importButton.heightAnchor.constraint(equalToConstant: Constants.ImportButtonLayout.side).isActive = true
@@ -161,7 +171,7 @@ class MyFilesViewController: UIViewController {
     private func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
-        let files = presenter?.files as? [DiskFile] ?? []
+        let files = presenter?.filteredFiles(for: searchController.searchBar.text) as? [DiskFile] ?? []
         snapshot.appendItems(files)
         dataSource.apply(snapshot,
                          animatingDifferences: true)
@@ -188,6 +198,6 @@ extension MyFilesViewController: UICollectionViewDelegate {
         
         let pdfDocumentViewController = PDFDocumentViewController(diskFile: diskFile)
         
-        present(pdfDocumentViewController, animated: true)
+        navigationController?.present(pdfDocumentViewController, animated: true)
     }
 }

@@ -15,10 +15,6 @@ class MyFilesPresenter: PresenterProtocol {
     
     let title: String
     
-    var files: [any FileProtocol] {
-        return interactor.files ?? []
-    }
-    
     init(interactor: MyFilesInteractor,
          documentImportManager: DocumentImportManagerProtocol,
          title: String) {
@@ -37,5 +33,22 @@ class MyFilesPresenter: PresenterProtocol {
     
     func remove(dynamicUI: DynamicUIProtocol) {
         documentPickerManager.remove(dynamicUI: dynamicUI)
+    }
+    
+    func filteredFiles(for queryOrNil: String?) -> [any FileProtocol] {
+        let files = files()
+        
+        guard let query = queryOrNil,
+              !query.isEmpty else {
+            return files
+        }
+        
+        return files.filter {
+            return $0.name.lowercased().contains(query.lowercased())
+        }
+    }
+    
+    private func files() -> [any FileProtocol] {
+        return interactor.files ?? []
     }
 }

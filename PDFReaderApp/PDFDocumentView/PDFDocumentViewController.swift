@@ -58,9 +58,9 @@ class PDFDocumentViewController: UIViewController {
     
     private func setupConstraints() {
         pdfView.translatesAutoresizingMaskIntoConstraints = false
-        pdfView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        pdfView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        pdfView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        pdfView.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor).isActive = true
+        pdfView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor).isActive = true
+        pdfView.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor).isActive = true
+        pdfView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor).isActive = true
     }
 }
