@@ -135,19 +135,19 @@ class MyFilesViewController: UIViewController {
     
     private func setupConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.readableContentGuide.topAnchor,
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                             constant: Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.readableContentGuide.trailingAnchor,
+        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,
                                                  constant: -Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor,
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                                constant: -Constants.FilesList.Layout.contentInset).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor,
+        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,
                                                 constant: Constants.FilesList.Layout.contentInset).isActive = true
         
         importButton.translatesAutoresizingMaskIntoConstraints = false
-        importButton.rightAnchor.constraint(equalTo: view.readableContentGuide.rightAnchor,
+        importButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,
                                             constant: Constants.ImportButtonLayout.rightOffset).isActive = true
-        importButton.bottomAnchor.constraint(equalTo: view.readableContentGuide.bottomAnchor,
+        importButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
                                              constant: Constants.ImportButtonLayout.bottomOffset).isActive = true
         importButton.widthAnchor.constraint(equalToConstant: Constants.ImportButtonLayout.side).isActive = true
         importButton.heightAnchor.constraint(equalToConstant: Constants.ImportButtonLayout.side).isActive = true
