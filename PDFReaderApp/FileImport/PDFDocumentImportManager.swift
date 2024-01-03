@@ -54,8 +54,9 @@ final class PDFDocumentImportManager: DocumentImportManager {
                 }
             }
             
-            dispatchGroup.wait()
-            completionHandler()
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                completionHandler()
+            }
         }
     }
     

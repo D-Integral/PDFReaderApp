@@ -80,10 +80,8 @@ final class DocumentPickerManager: NSObject, UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController,
                         didPickDocumentsAt urls: [URL]) {
-        documentImportManager.importDocuments(at: urls) {
-            DispatchQueue.main.async { [weak self] in
-                self?.updateUI()
-            }
+        documentImportManager.importDocuments(at: urls) { [weak self] in
+            self?.updateUI()
         }
     }
     
