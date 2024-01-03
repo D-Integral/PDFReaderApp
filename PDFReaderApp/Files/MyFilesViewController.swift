@@ -196,8 +196,7 @@ extension MyFilesViewController: UICollectionViewDelegate {
             return
         }
         
-        let pdfDocumentViewController = PDFDocumentViewController(diskFile: diskFile)
-        
-        navigationController?.present(pdfDocumentViewController, animated: true)
+        navigationController?.present(PDFDocumentRouter().make(diskFile: diskFile),
+                                      animated: true)
     }
 }
