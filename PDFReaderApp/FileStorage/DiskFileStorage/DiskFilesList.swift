@@ -12,7 +12,7 @@ struct DiskFilesList: FilesListProtocol {
         self.diskFiles = diskFiles
     }
     
-    var files: [String: FileProtocol] {
+    var files: [String: any FileProtocol] {
         get {
             return diskFiles
         }

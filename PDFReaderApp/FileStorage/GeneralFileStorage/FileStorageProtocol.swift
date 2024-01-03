@@ -11,8 +11,9 @@ protocol FileStorageProtocol {
     var fileNames: [String] { get }
     var filesCount: Int { get }
     
-    func file(withName fileName: String) -> FileProtocol?
+    func file(withName fileName: String) -> (any FileProtocol)?
+    func files() -> [any FileProtocol]
     
-    func save(_ file: FileProtocol) throws
+    func save(_ file: any FileProtocol) throws
     func delete(_ fileName: String)
 }

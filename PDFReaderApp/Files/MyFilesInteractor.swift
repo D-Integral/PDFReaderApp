@@ -8,7 +8,11 @@
 import Foundation
 
 class MyFilesInteractor: InteractorProtocol {
-    let fileStorage: FileStorageProtocol
+    var files: [any FileProtocol]? {
+        return fileStorage.files()
+    }
+    
+    private let fileStorage: FileStorageProtocol
     
     init(fileStorage: FileStorageProtocol) {
         self.fileStorage = fileStorage

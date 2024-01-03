@@ -18,6 +18,11 @@
 		0F4130C72B41B9F100981698 /* DocumentImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4130C62B41B9F100981698 /* DocumentImportManager.swift */; };
 		0F4130C92B41BB5A00981698 /* DocumentImportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4130C82B41BB5A00981698 /* DocumentImportError.swift */; };
 		0F4130CB2B41BE0900981698 /* DocumentPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4130CA2B41BE0900981698 /* DocumentPickerManager.swift */; };
+		0F4130CD2B4587E100981698 /* MyFilesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4130CC2B4587E100981698 /* MyFilesCollectionViewCell.swift */; };
+		0F4130D02B458B6800981698 /* PDFDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4130CF2B458B6800981698 /* PDFDocumentViewController.swift */; };
+		0FAA0DF52B45C0D5002FC0F9 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA0DF42B45C0D5002FC0F9 /* Weak.swift */; };
+		0FAA0DFD2B45CB9D002FC0F9 /* DynamicUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA0DFC2B45CB9D002FC0F9 /* DynamicUIProtocol.swift */; };
+		0FAA0DFF2B45CBD5002FC0F9 /* UIViewController+DynamicUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA0DFE2B45CBD5002FC0F9 /* UIViewController+DynamicUIProtocol.swift */; };
 		0FB7DAE62B3DF08000985825 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0FB7DAE52B3DF08000985825 /* Localizable.xcstrings */; };
 		0FB7DAE82B3DF51B00985825 /* ToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */; };
 		0FB7DAEA2B3DF54100985825 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7DAE92B3DF54100985825 /* AccountViewController.swift */; };
@@ -63,6 +68,11 @@
 		0F4130C62B41B9F100981698 /* DocumentImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentImportManager.swift; sourceTree = "<group>"; };
 		0F4130C82B41BB5A00981698 /* DocumentImportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentImportError.swift; sourceTree = "<group>"; };
 		0F4130CA2B41BE0900981698 /* DocumentPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerManager.swift; sourceTree = "<group>"; };
+		0F4130CC2B4587E100981698 /* MyFilesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFilesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0F4130CF2B458B6800981698 /* PDFDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDocumentViewController.swift; sourceTree = "<group>"; };
+		0FAA0DF42B45C0D5002FC0F9 /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
+		0FAA0DFC2B45CB9D002FC0F9 /* DynamicUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicUIProtocol.swift; sourceTree = "<group>"; };
+		0FAA0DFE2B45CBD5002FC0F9 /* UIViewController+DynamicUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DynamicUIProtocol.swift"; sourceTree = "<group>"; };
 		0FB7DAE52B3DF08000985825 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0FB7DAE72B3DF51B00985825 /* ToolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsViewController.swift; sourceTree = "<group>"; };
 		0FB7DAE92B3DF54100985825 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +128,27 @@
 			path = FileImport;
 			sourceTree = "<group>";
 		};
+		0F4130CE2B458B3800981698 /* PDFDocumentView */ = {
+			isa = PBXGroup;
+			children = (
+				0F4130CF2B458B6800981698 /* PDFDocumentViewController.swift */,
+			);
+			path = PDFDocumentView;
+			sourceTree = "<group>";
+		};
+		0FAA0DF32B45C0C1002FC0F9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0FAA0DF42B45C0D5002FC0F9 /* Weak.swift */,
+				0F4130B72B40C9F800981698 /* PresenterProtocol.swift */,
+				0F4130B92B40CA0600981698 /* InteractorProtocol.swift */,
+				0F4130BD2B40CD3400981698 /* RouterProtocol.swift */,
+				0FAA0DFC2B45CB9D002FC0F9 /* DynamicUIProtocol.swift */,
+				0FAA0DFE2B45CBD5002FC0F9 /* UIViewController+DynamicUIProtocol.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0FB7DAED2B3F124D00985825 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +156,7 @@
 				0F4130B32B40C85900981698 /* MyFilesPresenter.swift */,
 				0F4130B52B40C86C00981698 /* MyFilesInteractor.swift */,
 				0F4130BB2B40CD2400981698 /* MyFilesRouter.swift */,
+				0F4130CC2B4587E100981698 /* MyFilesCollectionViewCell.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -202,14 +234,13 @@
 				0FBCA99B2B3DA7A000149F38 /* SceneDelegate.swift */,
 				0FB7DAEB2B3E0A1600985825 /* HomeTabBarController.swift */,
 				0FB7DAFE2B3F1C8900985825 /* AppCoordinator.swift */,
-				0F4130B72B40C9F800981698 /* PresenterProtocol.swift */,
-				0F4130B92B40CA0600981698 /* InteractorProtocol.swift */,
-				0F4130BD2B40CD3400981698 /* RouterProtocol.swift */,
 				0F4130C12B40E30C00981698 /* FileImport */,
 				0FB7DAF02B3F12A600985825 /* FileStorage */,
 				0FB7DAEE2B3F126300985825 /* Account */,
 				0FB7DAED2B3F124D00985825 /* Files */,
 				0FB7DAEF2B3F127800985825 /* Tools */,
+				0F4130CE2B458B3800981698 /* PDFDocumentView */,
+				0FAA0DF32B45C0C1002FC0F9 /* Helpers */,
 				0FB7DAE52B3DF08000985825 /* Localizable.xcstrings */,
 				0FBCA9A22B3DA7A200149F38 /* Assets.xcassets */,
 				0FBCA9A42B3DA7A200149F38 /* LaunchScreen.storyboard */,
@@ -348,6 +379,7 @@
 				0F4130C52B41B99A00981698 /* PDFDocumentImportManager.swift in Sources */,
 				0F4130BC2B40CD2400981698 /* MyFilesRouter.swift in Sources */,
 				0F4130C32B41B96D00981698 /* DocumentImportManagerProtocol.swift in Sources */,
+				0FAA0DFD2B45CB9D002FC0F9 /* DynamicUIProtocol.swift in Sources */,
 				0F4130C72B41B9F100981698 /* DocumentImportManager.swift in Sources */,
 				0F4130B62B40C86C00981698 /* MyFilesInteractor.swift in Sources */,
 				0F4130CB2B41BE0900981698 /* DocumentPickerManager.swift in Sources */,
@@ -355,10 +387,13 @@
 				0F4130B82B40C9F800981698 /* PresenterProtocol.swift in Sources */,
 				0FB7DAEC2B3E0A1600985825 /* HomeTabBarController.swift in Sources */,
 				0F4130C92B41BB5A00981698 /* DocumentImportError.swift in Sources */,
+				0FAA0DF52B45C0D5002FC0F9 /* Weak.swift in Sources */,
 				0FB7DAF92B3F16B400985825 /* DiskFileStorage.swift in Sources */,
 				0F4130BE2B40CD3400981698 /* RouterProtocol.swift in Sources */,
 				0FBCA99E2B3DA7A000149F38 /* MyFilesViewController.swift in Sources */,
+				0FAA0DFF2B45CBD5002FC0F9 /* UIViewController+DynamicUIProtocol.swift in Sources */,
 				0FB7DB092B3F2B9D00985825 /* DiskFilesList.swift in Sources */,
+				0F4130D02B458B6800981698 /* PDFDocumentViewController.swift in Sources */,
 				0FB7DB012B3F1F2000985825 /* FileType.swift in Sources */,
 				0FB7DAF52B3F159900985825 /* FileProtocol.swift in Sources */,
 				0F4130B42B40C85900981698 /* MyFilesPresenter.swift in Sources */,
@@ -367,6 +402,7 @@
 				0FB7DAFB2B3F1A6F00985825 /* FilesListProtocol.swift in Sources */,
 				0FBCA99C2B3DA7A000149F38 /* SceneDelegate.swift in Sources */,
 				0FB7DB0B2B3F30F600985825 /* DiskFileStorageError.swift in Sources */,
+				0F4130CD2B4587E100981698 /* MyFilesCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

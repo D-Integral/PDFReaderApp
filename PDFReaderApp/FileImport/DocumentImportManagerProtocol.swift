@@ -14,5 +14,5 @@ protocol DocumentImportManagerProtocol {
     init(fileStorage: FileStorageProtocol)
     
     func save(from url: URL) throws
-    func documentFile(from fileUrl: URL) -> FileProtocol?
+    func documentFile(from fileUrl: URL) -> (any FileProtocol)?
 }

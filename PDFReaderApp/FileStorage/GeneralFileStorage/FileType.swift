@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FileType: Codable {
+enum FileType: Codable, Hashable {
     case pdfDocument
     case unknown
 }

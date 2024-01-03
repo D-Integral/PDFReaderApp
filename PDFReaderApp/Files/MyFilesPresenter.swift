@@ -11,9 +11,13 @@ import UIKit
 class MyFilesPresenter: PresenterProtocol {
     private let interactor: MyFilesInteractor
     
-    let documentPickerManager: DocumentPickerManager
+    private let documentPickerManager: DocumentPickerManager
     
     let title: String
+    
+    var files: [any FileProtocol] {
+        return interactor.files ?? []
+    }
     
     init(interactor: MyFilesInteractor,
          documentImportManager: DocumentImportManagerProtocol,
@@ -25,5 +29,13 @@ class MyFilesPresenter: PresenterProtocol {
     
     var documentPickerViewController: UIDocumentPickerViewController? {
         return documentPickerManager.documentPickerViewController
+    }
+    
+    func add(dynamicUI: DynamicUIProtocol) {
+        documentPickerManager.add(dynamicUI: dynamicUI)
+    }
+    
+    func remove(dynamicUI: DynamicUIProtocol) {
+        documentPickerManager.remove(dynamicUI: dynamicUI)
     }
 }

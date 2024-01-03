@@ -28,13 +28,13 @@ class DocumentImportManager: NSObject, DocumentImportManagerProtocol {
         save(file)
     }
     
-    func documentFile(from fileUrl: URL) -> FileProtocol? {
+    func documentFile(from fileUrl: URL) -> (any FileProtocol)? {
         return nil
     }
     
     // MARK: Private Methods
     
-    private func save(_ file: FileProtocol) {
+    private func save(_ file: any FileProtocol) {
         do {
             try fileStorage.save(file)
         } catch {

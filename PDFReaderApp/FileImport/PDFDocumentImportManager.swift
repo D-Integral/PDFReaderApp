@@ -10,7 +10,7 @@ import UIKit
 import PDFKit
 
 final class PDFDocumentImportManager: DocumentImportManager {
-    override func documentFile(from fileUrl: URL) -> FileProtocol? {
+    override func documentFile(from fileUrl: URL) -> (any FileProtocol)? {
         guard let pdfDocument = PDFDocument(url: fileUrl) else {
             return nil
         }

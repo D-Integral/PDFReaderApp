@@ -6,19 +6,47 @@
 //
 
 import UIKit
+import PDFKit
 
 class MyFilesViewController: UIViewController {
+    // MARK: - Definitions
+    
     struct Constants {
         struct ImportButtonLayout {
             static let side = 60.0;
             static let rightOffset = -15.0
             static let bottomOffset = -20.0
         }
+        
+        struct FilesList {
+            struct Layout {
+                static let contentInset = 15.0
+            }
+            
+            struct Reuse {
+                static let cellIdentifier = "MyFilesCollectionViewCell"
+            }
+        }
     }
+    
+    enum Section {
+      case main
+    }
+    
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, DiskFile>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, DiskFile>
+    
+    // MARK: - Properties
     
     let presenter: MyFilesPresenter?
     
+    private lazy var dataSource = makeDataSource()
+    
     let importButton = UIButton(type: .custom)
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: UICollectionViewFlowLayout())
+    
+    // MARK: - Life Cycle
     
     init(presenter: MyFilesPresenter) {
         self.presenter = presenter
@@ -27,6 +55,8 @@ class MyFilesViewController: UIViewController {
                    bundle: nil)
         
         self.title = presenter.title
+        
+        self.presenter?.add(dynamicUI: self)
     }
     
     required init?(coder: NSCoder) {
@@ -40,8 +70,47 @@ class MyFilesViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        setupCollectionView()
         setupImportButton()
         setupConstraints()
+        
+        updateDynamicUI()
+    }
+    
+    // MARK: - Collection View
+    
+    func collectionViewLayout() -> UICollectionViewLayout {
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0))
+      let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalWidth(2/3))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: groupSize,
+        subitem: fullPhotoItem,
+        count: 1)
+      let section = NSCollectionLayoutSection(group: group)
+      let layout = UICollectionViewCompositionalLayout(section: section)
+      return layout
+    }
+    
+    // MARK: - DynamicUIProtocol
+    
+    override func updateDynamicUI() {
+        applySnapshot()
+    }
+    
+    // MARK: - Setup
+    
+    private func setupCollectionView() {
+        collectionView.collectionViewLayout = collectionViewLayout()
+        collectionView.register(MyFilesCollectionViewCell.self,
+                                forCellWithReuseIdentifier: Constants.FilesList.Reuse.cellIdentifier)
+        collectionView.delegate = self
+        
+        view.addSubview(collectionView)
     }
     
     private func setupImportButton() {
@@ -55,6 +124,16 @@ class MyFilesViewController: UIViewController {
     }
     
     private func setupConstraints() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                            constant: Constants.FilesList.Layout.contentInset).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,
+                                              constant: -Constants.FilesList.Layout.contentInset).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                               constant: -Constants.FilesList.Layout.contentInset).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor,
+                                             constant: Constants.FilesList.Layout.contentInset).isActive = true
+        
         importButton.translatesAutoresizingMaskIntoConstraints = false
         importButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,
                                             constant: Constants.ImportButtonLayout.rightOffset).isActive = true
@@ -64,11 +143,51 @@ class MyFilesViewController: UIViewController {
         importButton.heightAnchor.constraint(equalToConstant: Constants.ImportButtonLayout.side).isActive = true
     }
     
+    // MARK: - Private Functions
+    
+    private func makeDataSource() -> DataSource {
+      let dataSource = DataSource(collectionView: collectionView,
+                                  cellProvider: { (collectionView, indexPath, diskFile) -> UICollectionViewCell? in
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.FilesList.Reuse.cellIdentifier,
+                                                        for: indexPath) as? MyFilesCollectionViewCell
+          cell?.diskFile = diskFile
+          
+          return cell
+      })
+        
+      return dataSource
+    }
+    
+    private func applySnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.main])
+        let files = presenter?.files as? [DiskFile] ?? []
+        snapshot.appendItems(files)
+        dataSource.apply(snapshot,
+                         animatingDifferences: true)
+    }
+    
     @objc private func importAction() {
         guard let documentPicker = presenter?.documentPickerViewController else { return }
         
         self.present(documentPicker,
                      animated: true,
                      completion: nil)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MyFilesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard let diskFile = dataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        
+        let pdfDocumentViewController = PDFDocumentViewController(diskFile: diskFile)
+        
+        present(pdfDocumentViewController, animated: true)
     }
 }

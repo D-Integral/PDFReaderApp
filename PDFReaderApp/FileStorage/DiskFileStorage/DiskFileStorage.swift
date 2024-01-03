@@ -31,11 +31,11 @@ final class DiskFileStorage: FileStorageProtocol {
         return filesList?.files.count ?? 0
     }
     
-    func file(withName fileName: String) -> FileProtocol? {
+    func file(withName fileName: String) -> (any FileProtocol)? {
         return filesList?.files[fileName]
     }
     
-    func save(_ file: FileProtocol) throws {
+    func save(_ file: any FileProtocol) throws {
         guard let diskFile = file as? DiskFile else {
             throw DiskFileStorageError.wrongFileType
         }
@@ -49,6 +49,10 @@ final class DiskFileStorage: FileStorageProtocol {
         filesList?.files[fileName] = nil
         
         synchronize()
+    }
+    
+    func files() -> [any FileProtocol] {
+        return Array(filesList?.files.values ?? [String: any FileProtocol]().values)
     }
     
     // MARK: Files List
@@ -78,6 +82,7 @@ final class DiskFileStorage: FileStorageProtocol {
         }
         
         let jsonData = try Data(contentsOf: url)
+        
         return try JSONDecoder().decode(DiskFilesList.self,
                                         from: jsonData)
     }
