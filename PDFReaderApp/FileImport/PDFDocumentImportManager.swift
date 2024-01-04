@@ -10,25 +10,36 @@ import UIKit
 import PDFKit
 
 final class PDFDocumentImportManager: DocumentImportManager {
-    override func documentFile(from fileUrl: URL) -> (any FileProtocol)? {
-        guard let pdfDocument = PDFDocument(url: fileUrl) else {
-            return nil
+    override func documentFile(from fileUrl: URL,
+                               completionHandler: @escaping ((any FileProtocol)?,
+                                                             DocumentImportError?) -> ()) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let pdfDocument = PDFDocument(url: fileUrl) else {
+                completionHandler(nil,
+                                  .documentCanNotBeInstantiatedUsingProvidedUrl)
+                return
+            }
+            
+            guard let fileData = pdfDocument.dataRepresentation() else {
+                completionHandler(nil,
+                                  .documentCanNotBeConvertedToData)
+                return
+            }
+            
+            let documentAttributes = pdfDocument.documentAttributes
+            let defaultDate = Date()
+            let createdDate = documentAttributes?["CreationDate"] as? Date ?? defaultDate
+            let modifiedDate = documentAttributes?["ModDate"] as? Date ?? defaultDate
+            
+            completionHandler(DiskFile(name: fileUrl.lastPathComponent,
+                                       data: fileData,
+                                       createdDate: createdDate,
+                                       modifiedDate: modifiedDate,
+                                       fileType: .pdfDocument),
+                              nil)
         }
         
-        guard let fileData = pdfDocument.dataRepresentation() else {
-            return nil
-        }
         
-        let documentAttributes = pdfDocument.documentAttributes
-        let defaultDate = Date()
-        let createdDate = documentAttributes?["CreationDate"] as? Date ?? defaultDate
-        let modifiedDate = documentAttributes?["ModDate"] as? Date ?? defaultDate
-        
-        return DiskFile(name: fileUrl.lastPathComponent,
-                        data: fileData,
-                        createdDate: createdDate,
-                        modifiedDate: modifiedDate,
-                        fileType: .pdfDocument)
     }
     
     override var documentTypeTag: String? {
@@ -42,6 +53,7 @@ final class PDFDocumentImportManager: DocumentImportManager {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             let dispatchGroup = DispatchGroup()
             let queue = OperationQueue()
+            queue.qualityOfService = .userInitiated
             
             for url in urls {
                 dispatchGroup.enter()

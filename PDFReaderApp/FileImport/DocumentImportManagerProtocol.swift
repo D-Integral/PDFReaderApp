@@ -13,8 +13,10 @@ protocol DocumentImportManagerProtocol {
     
     init(fileStorage: FileStorageProtocol)
     
-    func save(from url: URL) throws
-    func documentFile(from fileUrl: URL) -> (any FileProtocol)?
+    func save(from url: URL)
+    func documentFile(from fileUrl: URL,
+                      completionHandler: @escaping ((any FileProtocol)?,
+                                                    DocumentImportError?) -> ())
     func importDocuments(at urls: [URL],
                          completionHandler: @escaping () -> ())
 }

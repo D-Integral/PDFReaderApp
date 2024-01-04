@@ -11,4 +11,5 @@ import Foundation
 
 enum DocumentImportError: Error {
     case documentCanNotBeInstantiatedUsingProvidedUrl
+    case documentCanNotBeConvertedToData
 }

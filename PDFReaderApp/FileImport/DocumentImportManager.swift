@@ -20,16 +20,23 @@ class DocumentImportManager: NSObject, DocumentImportManagerProtocol {
         self.fileStorage = fileStorage
     }
     
-    func save(from url: URL) throws {
-        guard let file = documentFile(from: url) else {
-            throw DocumentImportError.documentCanNotBeInstantiatedUsingProvidedUrl
+    func save(from url: URL) {
+        documentFile(from: url) { [weak self] file, error in
+            if let error = error {
+                print(error)
+            }
+            
+            guard let file = file else { return }
+            
+            self?.save(file)
         }
-        
-        save(file)
     }
     
-    func documentFile(from fileUrl: URL) -> (any FileProtocol)? {
-        return nil
+    func documentFile(from fileUrl: URL,
+                      completionHandler: @escaping ((any FileProtocol)?,
+                                                    DocumentImportError?) -> ()) {
+        completionHandler(nil,
+                          nil)
     }
     
     func importDocuments(at urls: [URL],
