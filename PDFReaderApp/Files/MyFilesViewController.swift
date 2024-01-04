@@ -20,7 +20,8 @@ class MyFilesViewController: UIViewController {
         
         struct FilesList {
             struct Layout {
-                static let contentInset = 15.0
+                static let contentInset = 12.0
+                static let cellContentInset = 3.0
                 static let columnsCount = 3
             }
             
@@ -83,20 +84,17 @@ class MyFilesViewController: UIViewController {
     // MARK: - Collection View
     
     func collectionViewLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0 / 3.0),
+                                              heightDimension: .fractionalHeight(1.0))
         let documentItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        documentItem.contentInsets = NSDirectionalEdgeInsets(
-            top: 2,
-            leading: 2,
-            bottom: 2,
-            trailing: 2)
+        let inset = Constants.FilesList.Layout.cellContentInset
+        documentItem.contentInsets = NSDirectionalEdgeInsets(top: inset,
+                                                             leading: inset,
+                                                             bottom: inset,
+                                                             trailing: inset)
         
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1.0/3.0))
-        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalWidth(1.0/3.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        repeatingSubitem: documentItem,
                                                        count: Constants.FilesList.Layout.columnsCount)
