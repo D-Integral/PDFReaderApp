@@ -21,6 +21,7 @@ class MyFilesViewController: UIViewController {
         struct FilesList {
             struct Layout {
                 static let contentInset = 15.0
+                static let columnsCount = 3
             }
             
             struct Reuse {
@@ -40,7 +41,7 @@ class MyFilesViewController: UIViewController {
     
     let presenter: MyFilesPresenter?
     
-    private lazy var dataSource = makeDataSource()
+    lazy var dataSource = makeDataSource()
     
     private let importButton = UIButton(type: .custom)
     private let collectionView = UICollectionView(frame: .zero,
@@ -82,20 +83,27 @@ class MyFilesViewController: UIViewController {
     // MARK: - Collection View
     
     func collectionViewLayout() -> UICollectionViewLayout {
-      let itemSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0),
-        heightDimension: .fractionalHeight(1.0))
-      let fullPhotoItem = NSCollectionLayoutItem(layoutSize: itemSize)
-      let groupSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0),
-        heightDimension: .fractionalWidth(2/3))
-      let group = NSCollectionLayoutGroup.horizontal(
-        layoutSize: groupSize,
-        subitem: fullPhotoItem,
-        count: 1)
-      let section = NSCollectionLayoutSection(group: group)
-      let layout = UICollectionViewCompositionalLayout(section: section)
-      return layout
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let documentItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        documentItem.contentInsets = NSDirectionalEdgeInsets(
+            top: 2,
+            leading: 2,
+            bottom: 2,
+            trailing: 2)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(1.0/3.0))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       repeatingSubitem: documentItem,
+                                                       count: Constants.FilesList.Layout.columnsCount)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
     }
     
     // MARK: - DynamicUIProtocol
@@ -183,20 +191,5 @@ class MyFilesViewController: UIViewController {
         self.present(documentPicker,
                      animated: true,
                      completion: nil)
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension MyFilesViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath
-    ) {
-        guard let diskFile = dataSource.itemIdentifier(for: indexPath) else {
-            return
-        }
-        
-        navigationController?.present(PDFDocumentRouter().make(diskFile: diskFile),
-                                      animated: true)
     }
 }
