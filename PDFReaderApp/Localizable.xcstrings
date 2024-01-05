@@ -71,6 +71,12 @@
         }
       }
     },
+    "Cancel" : {
+      "comment" : "cancel action"
+    },
+    "Delete" : {
+
+    },
     "filesTabBarItemTitle" : {
       "extractionState" : "manual",
       "localizations" : {

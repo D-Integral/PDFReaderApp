@@ -48,6 +48,10 @@ class MyFilesPresenter: PresenterProtocol {
         }
     }
     
+    func deleteFile(withId fileId: UUID) {
+        interactor.deleteFile(withId: fileId)
+    }
+    
     private func files() -> [any FileProtocol] {
         return interactor.files ?? []
     }

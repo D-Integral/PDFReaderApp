@@ -17,7 +17,7 @@ final class DiskFileStorage: FileStorageProtocol {
         }
         
         if nil == self.filesList {
-            self.filesList = DiskFilesList(diskFiles: [String : DiskFile]())
+            self.filesList = DiskFilesList(diskFiles: [UUID : DiskFile]())
         }
     }
     
@@ -31,8 +31,8 @@ final class DiskFileStorage: FileStorageProtocol {
         return filesList?.files.count ?? 0
     }
     
-    func file(withName fileName: String) -> (any FileProtocol)? {
-        return filesList?.files[fileName]
+    func file(withId fileId: UUID) -> (any FileProtocol)? {
+        return filesList?.files[fileId]
     }
     
     func save(_ file: any FileProtocol) throws {
@@ -40,19 +40,19 @@ final class DiskFileStorage: FileStorageProtocol {
             throw DiskFileStorageError.wrongFileType
         }
         
-        filesList?.files[diskFile.name] = diskFile
+        filesList?.files[diskFile.id] = diskFile
         
         synchronize()
     }
     
-    func delete(_ fileName: String) {
-        filesList?.files[fileName] = nil
+    func delete(_ fileId: UUID) {
+        filesList?.files.removeValue(forKey: fileId)
         
         synchronize()
     }
     
     func files() -> [any FileProtocol] {
-        return Array(filesList?.files.values ?? [String: any FileProtocol]().values)
+        return Array(filesList?.files.values ?? [UUID: any FileProtocol]().values)
     }
     
     // MARK: Files List

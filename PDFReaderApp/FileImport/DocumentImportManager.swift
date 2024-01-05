@@ -20,15 +20,20 @@ class DocumentImportManager: NSObject, DocumentImportManagerProtocol {
         self.fileStorage = fileStorage
     }
     
-    func save(from url: URL) {
+    func save(from url: URL,
+              completionHandler: @escaping () -> ()) {
         documentFile(from: url) { [weak self] file, error in
             if let error = error {
                 print(error)
             }
             
-            guard let file = file else { return }
+            guard let file = file else {
+                completionHandler()
+                return
+            }
             
             self?.save(file)
+            completionHandler()
         }
     }
     

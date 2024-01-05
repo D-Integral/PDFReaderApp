@@ -61,8 +61,9 @@ final class PDFDocumentImportManager: DocumentImportManager {
                 
                 NSFileCoordinator().coordinate(with: [.readingIntent(with: url)],
                                                queue: queue) { [weak self] error in
-                    self?.onFileCoordinatorCompleted(for: url)
-                    dispatchGroup.leave()
+                    self?.onFileCoordinatorCompleted(for: url) {
+                        dispatchGroup.leave()
+                    }
                 }
             }
             
@@ -72,14 +73,12 @@ final class PDFDocumentImportManager: DocumentImportManager {
         }
     }
     
-    private func onFileCoordinatorCompleted(for url: URL) {
-        do {
-            try save(from: url)
-        } catch {
-            print(error)
+    private func onFileCoordinatorCompleted(for url: URL,
+                                            completionHandler: @escaping () -> ()) {
+        save(from: url) { [weak self] in
+            self?.stopAccessingSecurityScopedResource(for: url)
+            completionHandler()
         }
-        
-        stopAccessingSecurityScopedResource(for: url)
     }
     
     private func startAccessingSecurityScopedResource(for url: URL) {

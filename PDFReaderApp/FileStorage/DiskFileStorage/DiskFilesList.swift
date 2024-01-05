@@ -8,18 +8,18 @@
 import Foundation
 
 struct DiskFilesList: FilesListProtocol {
-    init(diskFiles: [String : DiskFile]) {
+    init(diskFiles: [UUID : DiskFile]) {
         self.diskFiles = diskFiles
     }
     
-    var files: [String: any FileProtocol] {
+    var files: [UUID: any FileProtocol] {
         get {
             return diskFiles
         }
         set {
-            diskFiles = newValue as? [String: DiskFile] ?? [String: DiskFile]()
+            diskFiles = newValue as? [UUID: DiskFile] ?? [UUID: DiskFile]()
         }
     }
     
-    private var diskFiles: [String: DiskFile]
+    private var diskFiles: [UUID: DiskFile]
 }

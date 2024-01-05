@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FilesListProtocol: Codable {
-    var files: [String: any FileProtocol] { get set }
+    var files: [UUID: any FileProtocol] { get set }
 }

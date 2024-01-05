@@ -17,4 +17,8 @@ class MyFilesInteractor: InteractorProtocol {
     init(fileStorage: FileStorageProtocol) {
         self.fileStorage = fileStorage
     }
+    
+    func deleteFile(withId fileId: UUID) {
+        fileStorage.delete(fileId)
+    }
 }

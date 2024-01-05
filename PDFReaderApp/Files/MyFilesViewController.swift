@@ -9,11 +9,12 @@ import UIKit
 import PDFKit
 
 class MyFilesViewController: UIViewController {
+    
     // MARK: - Definitions
     
     struct Constants {
         struct ImportButtonLayout {
-            static let side = 60.0;
+            static let side = 60.0
             static let rightOffset = -15.0
             static let bottomOffset = -20.0
         }
@@ -181,6 +182,11 @@ class MyFilesViewController: UIViewController {
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.FilesList.Reuse.cellIdentifier,
                                                         for: indexPath) as? MyFilesCollectionViewCell
           cell?.diskFile = diskFile
+          cell?.moreActionBlock = { [weak self] id in
+              guard let id = id else { return }
+              
+              self?.presentActionSheet(forFileId: id)
+          }
           
           return cell
       })
@@ -201,6 +207,28 @@ class MyFilesViewController: UIViewController {
         guard let documentPicker = presenter?.documentPickerViewController else { return }
         
         self.present(documentPicker,
+                     animated: true,
+                     completion: nil)
+    }
+    
+    private func presentActionSheet(forFileId fileId: UUID) {
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: String(localized: "Delete"),
+                                         style: .destructive,
+                                         handler: { [weak self] (action: UIAlertAction) -> Void in
+            self?.presenter?.deleteFile(withId: fileId)
+            self?.updateDynamicUI()
+        })
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "cancel action"), style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.dismiss(animated: true)
+        })
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController,
                      animated: true,
                      completion: nil)
     }
