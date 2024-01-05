@@ -202,7 +202,7 @@ class MyFilesViewController: UIViewController {
     private func applySnapshot() {
         var snapshot = Snapshot()
         snapshot.appendSections([.main])
-        let files = presenter?.filteredFiles(for: searchController.searchBar.text) as? [DiskFile] ?? []
+        let files = presenter?.sortedAndFilteredFiles(for: searchController.searchBar.text) as? [DiskFile] ?? []
         snapshot.appendItems(files)
         dataSource.apply(snapshot,
                          animatingDifferences: true)

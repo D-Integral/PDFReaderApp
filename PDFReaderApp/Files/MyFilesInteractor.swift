@@ -21,4 +21,25 @@ class MyFilesInteractor: InteractorProtocol {
     func deleteFile(withId fileId: UUID) {
         fileStorage.delete(fileId)
     }
+    
+    func sortedAndFilteredFiles(for queryOrNil: String?) -> [any FileProtocol] {
+        return filteredFiles(for: queryOrNil).sorted { fileA, fileB in
+            return fileA.modifiedDate > fileB.modifiedDate
+        }
+    }
+    
+    private func filteredFiles(for queryOrNil: String?) -> [any FileProtocol] {
+        guard let files = files else {
+            return []
+        }
+        
+        guard let query = queryOrNil,
+              !query.isEmpty else {
+            return files
+        }
+        
+        return files.filter {
+            return $0.name.lowercased().contains(query.lowercased())
+        }
+    }
 }

@@ -36,25 +36,12 @@ class MyFilesPresenter: PresenterProtocol {
         documentPickerManager.remove(dynamicUI: dynamicUI)
     }
     
-    func filteredFiles(for queryOrNil: String?) -> [any FileProtocol] {
-        let files = files()
-        
-        guard let query = queryOrNil,
-              !query.isEmpty else {
-            return files
-        }
-        
-        return files.filter {
-            return $0.name.lowercased().contains(query.lowercased())
-        }
+    func sortedAndFilteredFiles(for queryOrNil: String?) -> [any FileProtocol] {
+        return interactor.sortedAndFilteredFiles(for: queryOrNil)
     }
     
     func deleteFile(withId fileId: UUID) {
         interactor.deleteFile(withId: fileId)
-    }
-    
-    private func files() -> [any FileProtocol] {
-        return interactor.files ?? []
     }
     
     func pdfDocumentThumbnail(ofSize thumbnailSize: CGSize,
