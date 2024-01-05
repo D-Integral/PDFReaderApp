@@ -99,10 +99,6 @@ class MyFilesViewController: UIViewController {
                                                   heightDimension: heightDimension)
             let documentItem = NSCollectionLayoutItem(layoutSize: itemSize)
             let inset = Constants.FilesList.Layout.cellContentInset
-            documentItem.contentInsets = NSDirectionalEdgeInsets(top: inset,
-                                                                 leading: inset,
-                                                                 bottom: inset,
-                                                                 trailing: inset)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: heightDimension)

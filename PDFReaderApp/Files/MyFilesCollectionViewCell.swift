@@ -51,7 +51,19 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
     
     var diskFile: DiskFile? {
         didSet {
-            documentTitleLabel.text = diskFile?.name ?? ""
+            guard let diskFile = diskFile else { return }
+            
+            documentTitleLabel.text = diskFile.name
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let modifiedDateString = dateFormatter.string(from: diskFile.modifiedDate)
+            
+            let byteCountFormatter = ByteCountFormatter()
+            byteCountFormatter.countStyle = .file
+            let dataSizeString = byteCountFormatter.string(fromByteCount: Int64(diskFile.data.count))
+            
+            documentInfoLabel.text = "\(modifiedDateString) • \(dataSizeString)"
         }
     }
     
@@ -100,6 +112,7 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
         documentTitleLabel.numberOfLines = 2
         documentTitleLabel.textColor = .colourDocumentTitle
         documentTitleLabel.font = .systemFont(ofSize: Constants.TitleLabel.fontSize)
+        documentTitleLabel.textAlignment = .center
         
         addSubview(documentTitleLabel)
     }
@@ -108,7 +121,7 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
         documentInfoLabel.numberOfLines = 1
         documentInfoLabel.textColor = .colourDocumentInfo
         documentInfoLabel.font = .systemFont(ofSize: Constants.InfoLabel.fontSize)
-        documentInfoLabel.text = "Test Info"
+        documentInfoLabel.textAlignment = .center
         
         addSubview(documentInfoLabel)
     }
