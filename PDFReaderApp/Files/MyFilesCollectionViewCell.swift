@@ -12,8 +12,17 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
     // MARK: - Definitions
     
     struct Constants {
+        struct Thumbnail {
+            static let size = CGSize(width: 65, height: 90)
+            static let inset = -5.0
+        }
+        
+        struct InfoLabel {
+            static let fontSize = 11.0
+        }
+        
         struct TitleLabel {
-            static let height = 96.0
+            static let fontSize = 14.0
         }
         
         struct MoreButton {
@@ -28,13 +37,17 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    let documentPreviewImageView = UIImageView()
+    let thumbnailImageView = UIImageView()
     let documentTitleLabel = UILabel()
-    let documentModifiedDateLabel = UILabel()
-    let documentSizeLabel = UILabel()
+    let documentInfoLabel = UILabel()
     let moreButton = UIButton(type: .custom)
     
-    var moreActionBlock: ((UUID?) -> ())? = nil
+    var moreActionBlock: ((DiskFile?) -> ())? = nil
+    var thumbnail: UIImage? = nil {
+        didSet {
+            thumbnailImageView.image = thumbnail
+        }
+    }
     
     var diskFile: DiskFile? {
         didSet {
@@ -72,15 +85,32 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
     
     private func setupUI() {
         setupDocumentTitleLabel()
+        setupDocumentInfoLabel()
         setupMoreButton()
+        setupThumbnailImageView()
         
         setupConstrains()
     }
     
+    private func setupThumbnailImageView() {
+        addSubview(thumbnailImageView)
+    }
+    
     private func setupDocumentTitleLabel() {
         documentTitleLabel.numberOfLines = 2
+        documentTitleLabel.textColor = .colourDocumentTitle
+        documentTitleLabel.font = .systemFont(ofSize: Constants.TitleLabel.fontSize)
         
         addSubview(documentTitleLabel)
+    }
+    
+    private func setupDocumentInfoLabel() {
+        documentInfoLabel.numberOfLines = 1
+        documentInfoLabel.textColor = .colourDocumentInfo
+        documentInfoLabel.font = .systemFont(ofSize: Constants.InfoLabel.fontSize)
+        documentInfoLabel.text = "Test Info"
+        
+        addSubview(documentInfoLabel)
     }
     
     private func setupMoreButton() {
@@ -99,16 +129,29 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
         moreButton.translatesAutoresizingMaskIntoConstraints = false
         moreButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         moreButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        let height = Constants.MoreButton.height + Constants.MoreButton.insets.top + Constants.MoreButton.insets.bottom
-        moreButton.heightAnchor.constraint(equalToConstant: height).isActive = true
-        let width = Constants.MoreButton.width + Constants.MoreButton.insets.leading + Constants.MoreButton.insets.trailing
-        moreButton.widthAnchor.constraint(equalToConstant: width).isActive = true
+        let moreButtonHeight = Constants.MoreButton.height + Constants.MoreButton.insets.top + Constants.MoreButton.insets.bottom
+        moreButton.heightAnchor.constraint(equalToConstant: moreButtonHeight).isActive = true
+        let moreButtonWidth = Constants.MoreButton.width + Constants.MoreButton.insets.leading + Constants.MoreButton.insets.trailing
+        moreButton.widthAnchor.constraint(equalToConstant: moreButtonWidth).isActive = true
+        
+        documentInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        documentInfoLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        documentInfoLabel.bottomAnchor.constraint(equalTo: moreButton.topAnchor).isActive = true
+        documentInfoLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        documentInfoLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         documentTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         documentTitleLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
-        documentTitleLabel.bottomAnchor.constraint(equalTo: moreButton.topAnchor).isActive = true
+        documentTitleLabel.bottomAnchor.constraint(equalTo: documentInfoLabel.topAnchor).isActive = true
         documentTitleLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-        documentTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.TitleLabel.height).isActive = true
+        documentTitleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        
+        thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
+        thumbnailImageView.widthAnchor.constraint(equalToConstant: Constants.Thumbnail.size.width).isActive = true
+        thumbnailImageView.heightAnchor.constraint(equalToConstant: Constants.Thumbnail.size.height).isActive = true
+        thumbnailImageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        thumbnailImageView.bottomAnchor.constraint(equalTo: documentTitleLabel.topAnchor,
+                                                   constant: Constants.Thumbnail.inset).isActive = true
     }
     
     // MARK: - Private Functions
@@ -116,6 +159,6 @@ class MyFilesCollectionViewCell: UICollectionViewCell {
     @objc private func moreAction() {
         guard let moreActionBlock = moreActionBlock else { return }
         
-        moreActionBlock(diskFile?.id)
+        moreActionBlock(diskFile)
     }
 }

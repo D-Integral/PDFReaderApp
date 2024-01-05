@@ -25,6 +25,7 @@ class MyFilesViewController: UIViewController {
                 static let cellContentInset = 3.0
                 static let narrowScreenColumnsCount = 3
                 static let wideScreenColumnsCount = 4
+                static let cellHeight = 182.0
             }
             
             struct Reuse {
@@ -92,9 +93,10 @@ class MyFilesViewController: UIViewController {
             let width = layoutEnvironment.container.effectiveContentSize.width
             let defaultColumnsCount = Constants.FilesList.Layout.narrowScreenColumnsCount
             let columnsCount = self?.columnsCount(forViewWidth: width) ?? defaultColumnsCount
+            let heightDimension = NSCollectionLayoutDimension.estimated(Constants.FilesList.Layout.cellHeight)
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0/CGFloat(columnsCount)),
-                                                  heightDimension: .fractionalHeight(1.0))
+                                                  heightDimension: heightDimension)
             let documentItem = NSCollectionLayoutItem(layoutSize: itemSize)
             let inset = Constants.FilesList.Layout.cellContentInset
             documentItem.contentInsets = NSDirectionalEdgeInsets(top: inset,
@@ -103,7 +105,7 @@ class MyFilesViewController: UIViewController {
                                                                  trailing: inset)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .fractionalWidth(1.0/CGFloat(columnsCount)))
+                                                   heightDimension: heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            repeatingSubitem: documentItem,
                                                            count: columnsCount)
@@ -178,15 +180,22 @@ class MyFilesViewController: UIViewController {
     
     private func makeDataSource() -> DataSource {
       let dataSource = DataSource(collectionView: collectionView,
-                                  cellProvider: { (collectionView, indexPath, diskFile) -> UICollectionViewCell? in
+                                  cellProvider: { [weak self] (collectionView, indexPath, diskFile) -> UICollectionViewCell? in
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.FilesList.Reuse.cellIdentifier,
                                                         for: indexPath) as? MyFilesCollectionViewCell
           cell?.diskFile = diskFile
-          cell?.moreActionBlock = { [weak self] id in
-              guard let id = id else { return }
+          cell?.moreActionBlock = { [weak self] diskFile in
+              guard let id = diskFile?.id else { return }
               
               self?.presentActionSheet(forFileId: id)
           }
+          
+          let thumbnailSize = MyFilesCollectionViewCell.Constants.Thumbnail.size
+          self?.presenter?.pdfDocumentThumbnail(ofSize: thumbnailSize,
+                                                forFile: diskFile,
+                                                completionHandler: { thumbnailImage in
+              cell?.thumbnail = thumbnailImage
+          })
           
           return cell
       })

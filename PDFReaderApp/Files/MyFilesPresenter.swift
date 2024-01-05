@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import PDFKit
 
 class MyFilesPresenter: PresenterProtocol {
     private let interactor: MyFilesInteractor
@@ -54,5 +55,19 @@ class MyFilesPresenter: PresenterProtocol {
     
     private func files() -> [any FileProtocol] {
         return interactor.files ?? []
+    }
+    
+    func pdfDocumentThumbnail(ofSize thumbnailSize: CGSize,
+                              forFile file: DiskFile,
+                              completionHandler: @escaping (UIImage?) -> ()) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let pdfDocument = PDFDocument(data: file.data)
+            let pdfDocumentPage = pdfDocument?.page(at: 0)
+            
+            DispatchQueue.main.async {
+                completionHandler(pdfDocumentPage?.thumbnail(of: thumbnailSize,
+                                                             for: PDFDisplayBox.trimBox))
+            }
+        }
     }
 }
